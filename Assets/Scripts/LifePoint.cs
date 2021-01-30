@@ -12,6 +12,16 @@ public class LifePoint : MonoBehaviour
         HP = HPMax;
     }
 
+    public void Cure(float Amount)
+    {
+        //TODO: Aggiungere Effetto
+        HP += Amount;
+        if (HP >= HPMax)
+        {
+            HP = HPMax;
+
+        }
+    }
     public void Damage(float Damage)
 	{
         //TODO: Aggiungere Effetto

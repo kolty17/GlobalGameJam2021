@@ -10,6 +10,9 @@ public static class Inventory
 		int result = 0;
 		switch (counter)
 		{
+			case 1:
+				result = 999999999;
+				break;
 			case 2:
 				result = food;
 				break;
