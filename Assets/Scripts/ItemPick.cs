@@ -6,6 +6,7 @@ public class ItemPick : MonoBehaviour
 {
     [SerializeField] int counter;
     private scrFooterBar FooterScript;
+    public bool MinotaurPickable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +41,25 @@ public class ItemPick : MonoBehaviour
                     break;
             }
         }
-	}
+        else if ((collision.gameObject.transform.root.gameObject.CompareTag("Platform") ||
+                 (collision.gameObject.transform.root.gameObject.CompareTag("Wall"))))
+		{
+            MinotaurPickable = false;
+
+        }
+        else if (collision.gameObject.transform.root.gameObject.CompareTag("Minotaur"))
+		{
+            Debug.Log("Preso al volo dal minotauro");
+		}
+    }
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+        if ((collision.gameObject.transform.root.gameObject.CompareTag("Platform") ||
+                 (collision.gameObject.transform.root.gameObject.CompareTag("Wall"))))
+        {
+            MinotaurPickable = false;
+
+        }
+    }
 }
