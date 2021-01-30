@@ -291,9 +291,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 2
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2887765995530653235
 MonoBehaviour:
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  HPMax: 300
+  HPMax: 6
 --- !u!114 &7983371117172004133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,10 +322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hunger: 0
-  HungerMax: 300
-  StarvationDamage: 20
+  HungerMax: 5
+  StarvationDamage: 1
   DepletionTime: 1
-  StarvationDamageTime: 1
+  StarvationDamageTime: 2
 --- !u!70 &3359226685169177047
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d735dccdebb3a2c4695ac446ea5069f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeltaSalto: 3
+  DeltaSalto: 15
   DeltaVelocita: 20
   InVolo: 0
   InMovimento: 0

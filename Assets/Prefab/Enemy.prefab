@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6350900df33a45446becdaa4892c0d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackIntensity: 1
-  meleeDamage: 10
+  knockbackIntensity: 100
+  meleeDamage: 1
 --- !u!1 &7894042308456915396
 GameObject:
   m_ObjectHideFlags: 0
