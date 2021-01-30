@@ -27,8 +27,8 @@ public class ItemPick : MonoBehaviour
                 case 1: 
                     break;
                 case 2:
-                    Inventory.food++;
-                    FooterScript.SetObject(2, FooterScript.ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.food);
+                    Inventory.DecreaseQuantity(2);
+                    FooterScript.SetObject(2, FooterScript.ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
                     Destroy(this.gameObject);
                     break;
                 case 3: 
