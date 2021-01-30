@@ -30,7 +30,7 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     void Start()
     {
 
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
         Player_FollowPointsScript = Player.transform.Find("FollowPointsSpawner").gameObject.GetComponent<Player_MinotaurFollowPoints>();
         transform.position = new Vector3(transform.position.x, transform.position.y, Player.transform.position.z);
 

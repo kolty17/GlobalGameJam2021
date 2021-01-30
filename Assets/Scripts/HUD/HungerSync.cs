@@ -10,7 +10,7 @@ public class HungerSync : MonoBehaviour
     private GameObject FillArea;
     void Start()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindGameObjectWithTag("Player"); //GameObject.Find("Player");
         slider = GetComponent<Slider>();
         slider.maxValue = Player.GetComponent<HungerPoint>().HungerMax;
 		FillArea = transform.Find("Fill Area").gameObject;

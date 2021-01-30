@@ -32,7 +32,15 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
         Player_FollowPoints_Container.transform.position = Vector3.zero;
 
         Minotaur = GameObject.Find("Minotaur");
-        Minotaur_FollowPlayerScript = Minotaur.GetComponent<Minotaur_FollowPlayer>();
+        if (Minotaur == null)
+        {
+            Debug.LogWarning("ATTENZIONE: non c'è il minotauro nella scena");
+            this.enabled = false;
+        }
+        else
+        {
+            Minotaur_FollowPlayerScript = Minotaur.GetComponent<Minotaur_FollowPlayer>();
+        }
 
     }
 

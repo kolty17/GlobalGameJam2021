@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Minotaur
-  - MinotaurFollowPoint
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -13,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PlayerCollision
+  - EnemyCollision
   - 
   - 
   - 
