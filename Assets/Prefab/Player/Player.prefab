@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  HPMax: 300
+  HPMax: 6
 --- !u!114 &7983371117172004133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,10 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hunger: 0
-  HungerMax: 300
-  StarvationDamage: 20
-  DepletionTime: 1
-  StarvationDamageTime: 1
+  HungerMax: 5
+  StarvationDamage: 1
+  DepletionTime: 10
+  StarvationDamageTime: 5
 --- !u!70 &3359226685169177047
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -328,6 +328,51 @@ MonoBehaviour:
   InMovimento: 0
   Forward: {x: 0, y: 0}
   VelocityCap: 25
+--- !u!1 &6998687727917695690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3077070692239577997}
+  - component: {fileID: 2460446477393579048}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3077070692239577997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998687727917695690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.91, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3428980777221713630}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2460446477393579048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998687727917695690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a94563c015f59b409d282ac828dc38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowForce: 10
+  ThrowDelay: 0.5
 --- !u!1 &7505739755501748469
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +523,7 @@ Transform:
   m_Children:
   - {fileID: 4738776564511053141}
   - {fileID: 3028065806332538527}
+  - {fileID: 3077070692239577997}
   m_Father: {fileID: 3144032727765888039}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
