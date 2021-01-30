@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6837154092922535916}
   - component: {fileID: 2062217576283777798}
   - component: {fileID: 3025531688621627539}
+  - component: {fileID: 794523695501847979}
   m_Layer: 12
   m_Name: cibo
   m_TagString: Untagged
@@ -98,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06, y: -0.07}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.23
 --- !u!50 &2062217576283777798
 Rigidbody2D:
   serializedVersion: 4
@@ -135,3 +136,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 2
+  MinotaurPickable: 1
+--- !u!114 &794523695501847979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452211867208237752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58da1ac57ec33694687cd63153f33088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minotaur_PatienceChange: 30

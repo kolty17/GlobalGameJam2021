@@ -10,6 +10,11 @@ public class ItemPick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("UI - FooterBar") == null)
+        {
+            this.enabled = false;
+            return;
+        }
         FooterScript = GameObject.Find("UI - FooterBar").GetComponent<scrFooterBar>();
     }
 
@@ -58,7 +63,14 @@ public class ItemPick : MonoBehaviour
         if ((collision.gameObject.transform.root.gameObject.CompareTag("Platform") ||
                  (collision.gameObject.transform.root.gameObject.CompareTag("Wall"))))
         {
+
             MinotaurPickable = false;
+
+            Minotaur_PatienceEffect patienceEffectScript = this.gameObject.GetComponent<Minotaur_PatienceEffect>();
+            if (patienceEffectScript != null)
+            {
+                Destroy(patienceEffectScript);
+            }
 
         }
     }

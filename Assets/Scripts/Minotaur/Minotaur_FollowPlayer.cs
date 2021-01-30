@@ -162,7 +162,7 @@ public class Minotaur_FollowPlayer : MonoBehaviour
             else
             {
 
-                Minotaur_Anims_Animator.SetBool("IsWalking", false);
+                Minotaur_Anims_Animator.SetBool("IsWalking", true);
                 //Minotaur_Anims_Animator.SetBool("IsJumping", true);
                 transform.position = Vector3.Lerp(Minotaur_FoPl_LerpStartPosition, Minotaur_FoPl_PointToReach.transform.position, Minotaur_FoPl_LerpTimer);
 

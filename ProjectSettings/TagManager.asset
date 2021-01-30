@@ -10,6 +10,7 @@ TagManager:
   - EnemyBody
   - Enemy
   - Projectile
+  - Wall
   layers:
   - Default
   - TransparentFX
