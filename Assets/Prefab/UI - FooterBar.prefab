@@ -1759,7 +1759,7 @@ GameObject:
   - component: {fileID: 7761139184833813556}
   - component: {fileID: 7761139184833813552}
   m_Layer: 5
-  m_Name: FooterBar
+  m_Name: UI - FooterBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1897,6 +1897,13 @@ MonoBehaviour:
   FOOD: {fileID: 21300000, guid: 1388578713c23c24088708d978012efe, type: 3}
   vita: 0
   cibo: 0
+  counter: 0
+  ItemArray:
+  - {fileID: 4452211867208237752, guid: d73b0a0d40f8ed343a70d74fda255be9, type: 3}
+  - {fileID: 4452211867208237752, guid: 6dce3fa7d4085444e995decf48230c30, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7761139184862683357
 GameObject:
   m_ObjectHideFlags: 0

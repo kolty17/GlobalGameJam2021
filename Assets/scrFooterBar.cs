@@ -35,17 +35,19 @@ public class scrFooterBar : MonoBehaviour
     int vita;
     [SerializeField]
     int cibo;
-    int counter;
+    [SerializeField] int counter;
+    [SerializeField] public GameObject[] ItemArray;
 
     // Start is called before the first frame update
     void Start()
     {
-        numero1.GetComponent<Text>().text = "";
+        //numero1.GetComponent<Text>().text = "";
         numero2.GetComponent<Text>().text = "";
         numero3.GetComponent<Text>().text = "";
         numero4.GetComponent<Text>().text = "";
         numero5.GetComponent<Text>().text = "";
         player = GameObject.FindGameObjectWithTag("Player");
+        SetObject(2, ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.food);
     }
 
     // Update is called once per frame
@@ -209,7 +211,7 @@ public class scrFooterBar : MonoBehaviour
     public void SetObject(int inventoryNumber, Sprite objSprite, int numberOfObjects)
     {
         if (inventoryNumber < 1) inventoryNumber = 1;
-        if (inventoryNumber < 5) inventoryNumber = 5;
+        if (inventoryNumber > 5) inventoryNumber = 5;
         if (numberOfObjects < 0) numberOfObjects = 0;
         if (numberOfObjects > 9) numberOfObjects = 9;
         
@@ -240,5 +242,10 @@ public class scrFooterBar : MonoBehaviour
         }
 
     }
+
+    public GameObject GetCurrentItemPrefab()
+	{
+        return ItemArray[counter - 1];
+	}
 
 }

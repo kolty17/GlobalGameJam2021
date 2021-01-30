@@ -324,8 +324,8 @@ MonoBehaviour:
   Hunger: 0
   HungerMax: 5
   StarvationDamage: 1
-  DepletionTime: 1
-  StarvationDamageTime: 2
+  DepletionTime: 10
+  StarvationDamageTime: 3
 --- !u!70 &3359226685169177047
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
