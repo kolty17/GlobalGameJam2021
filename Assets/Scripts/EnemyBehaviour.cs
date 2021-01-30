@@ -30,10 +30,14 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private bool IsPlayerInRange()
     {
-        bool isPlayerInRange = false;
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)
+        //bool isPlayerInRange = false;
+        bool isPlayerInRange = true;
+        if (player != null)
         {
-            isPlayerInRange = true;
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)
+            {
+                isPlayerInRange = true;
+            }
         }
         return isPlayerInRange;
     }
