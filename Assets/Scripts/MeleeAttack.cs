@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeAttack : MonoBehaviour
 {
     [SerializeField]
-    public float knockbackIntensity = 1.0f;
+    public float knockbackIntensity = 100f;
     public float meleeDamage = 10.0f;
     private Rigidbody2D parentRigidbody;
     // Start is called before the first frame update
@@ -39,6 +39,11 @@ public class MeleeAttack : MonoBehaviour
             parentRigidbody.velocity = new Vector2(parentRigidbody.velocity.x, 0);
             GetComponentInParent<EnemyBehaviour>().onTheFloor = true;
         }
+        /*else if (col.gameObject.CompareTag("Projectile"))
+        {
+            Debug.Log("PROJECTILE COLLIDED WITH ENEMY");
+            GetComponentInParent<Stordimento>().StunDamage(col.GetComponent<Bullet>().Damage);
+        }*/
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
