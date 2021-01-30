@@ -8,6 +8,8 @@ public class Minotaur_Patience : MonoBehaviour
     private GameObject Player;
     private Animator Minotaur_ExpressionsAnimator;
 
+    public Sprite Expression_IncreasePatience;
+    public Sprite Expression_DecreasePatience;
     public Sprite Expression_Love;
     public Sprite Expression_Like;
     public Sprite Expression_Neutral;
@@ -24,7 +26,8 @@ public class Minotaur_Patience : MonoBehaviour
 
     public float Minotaur_Patience_Show_Distance = 3.0f;
     public float Minotaur_Patience_Show_Timer = 4.0f;
-    private float Minotaur_Patience_Show_Timer_Actual = 4.0f;
+    public float Minotaur_Patience_Change_Timer = 0.5f;
+    private float Minotaur_Patience_Timer_Actual = 4.0f;
     private bool Minotaur_Patience_Showing = false;
 
     // Start is called before the first frame update
@@ -39,7 +42,7 @@ public class Minotaur_Patience : MonoBehaviour
         }
 
         Minotaur_PatiencePoints_Actual = Minotaur_PatiencePoints_Max / 2.0f;
-        Minotaur_Patience_Show_Timer_Actual = Minotaur_Patience_Show_Timer;
+        Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -90,7 +93,7 @@ public class Minotaur_Patience : MonoBehaviour
 
                     }
 
-                    Minotaur_Patience_Show_Timer_Actual = Minotaur_Patience_Show_Timer;
+                    Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
                     Minotaur_Patience_Showing = true;
 
                 }
@@ -101,9 +104,9 @@ public class Minotaur_Patience : MonoBehaviour
 
         if (Minotaur_Patience_Showing)
         {
-            
-            Minotaur_Patience_Show_Timer_Actual -= Time.deltaTime;
-            if (Minotaur_Patience_Show_Timer_Actual <= 0.0f)
+
+            Minotaur_Patience_Timer_Actual -= Time.deltaTime;
+            if (Minotaur_Patience_Timer_Actual <= 0.0f)
             {
                 Minotaur_ExpressionsAnimator.SetBool("Expressions", false);
 
@@ -114,7 +117,7 @@ public class Minotaur_Patience : MonoBehaviour
 
                 }
 
-                Minotaur_Patience_Show_Timer_Actual = Minotaur_Patience_Show_Timer;
+                Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
 
                 Minotaur_Patience_Showing = false;
             }
@@ -122,5 +125,34 @@ public class Minotaur_Patience : MonoBehaviour
         }
 
     }
+
+
+    void ChangePatience(float value)
+    {
+
+        Sprite actualExpression;
+        if (value >= 0)
+        {
+            actualExpression = Expression_IncreasePatience;
+        }
+        else
+        {
+            actualExpression = Expression_DecreasePatience;
+        }
+
+        foreach (GameObject expressionSlot in Expression_Gameobjects)
+        {
+
+            expressionSlot.GetComponent<SpriteRenderer>().sprite = actualExpression;
+
+        }
+
+        Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
+        Minotaur_Patience_Showing = true;
+
+        Minotaur_ExpressionsAnimator.SetBool("Expressions", true);
+
+    }
+
 
 }

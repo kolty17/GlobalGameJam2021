@@ -51,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Space) && !InVolo) //Salto
         {
-            Debug.Log("Salto");
+            //Debug.Log("Salto");
             rb.AddForce(Vector3.up * DeltaSalto, ForceMode2D.Impulse);
-            InVolo = true;
+            //InVolo = true;
             InMovimento = true;
         }
         if (!InMovimento)
