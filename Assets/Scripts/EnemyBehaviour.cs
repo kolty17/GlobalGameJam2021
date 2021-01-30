@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField]    
     public float DeltaSalto = 10.0f;
     public float DeltaVelocita = 1.0f;
     public float MoveSpeed = 1f;
@@ -30,7 +30,7 @@ public class EnemyBehaviour : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 0f;
             if (GetComponent<Stordimento>().IsStunned())
             {
-                rb.velocity = Vector2.zero;
+                //rb.velocity = Vector2.zero;
                 //stunned animation
             }
             else if (IsPlayerInRange())

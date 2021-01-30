@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Stordimento : MonoBehaviour
 {
-    [SerializeField] public float StunPoints;
+    [SerializeField] public float StunPoints = 0;
     [SerializeField] public float MaxStunPoints = 100f;
     [SerializeField] public float StunTime = 3f;
+    public GameObject StunSprite;
     public bool Stunned = false;
-    public float StunnedTime = 0;
+    public float StunnedTime = 0f;
     private Rigidbody2D rb;
     private GameObject player;
     // Start is called before the first frame update
@@ -35,8 +36,11 @@ public class Stordimento : MonoBehaviour
     }
     private void Stun()
     {
+        StunnedTime = StunTime;
         Stunned = true;
         StunPoints = 0;
+        Vector3 vec = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        GameObject stunSprite = GameObject.Instantiate(StunSprite, vec, Quaternion.identity, transform);
     }
 
     // Update is called once per frame
@@ -44,8 +48,9 @@ public class Stordimento : MonoBehaviour
     {
         if (Stunned)
         {
+            rb.velocity = Vector2.zero;
             StunnedTime -= Time.deltaTime;
-            if (StunnedTime <= 0f)
+            if (StunnedTime <= Mathf.Epsilon)
             {
                 StunnedTime = 0;
                 Stunned = false;

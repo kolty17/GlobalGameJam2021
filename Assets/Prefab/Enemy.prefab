@@ -244,5 +244,6 @@ MonoBehaviour:
   StunPoints: 0
   MaxStunPoints: 100
   StunTime: 3
+  StunSprite: {fileID: 3674940434980535541, guid: 7fbc220015539704588faab49c1745b2, type: 3}
   Stunned: 0
   StunnedTime: 0

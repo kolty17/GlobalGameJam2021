@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] public float Damage = 10.0f;
+    public float StunDamage = 25.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +24,20 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyBody"))
         {
             LifePoint LifePointScript = collision.gameObject.GetComponentInParent<LifePoint>();
+            Stordimento stordimentoScript = collision.gameObject.GetComponentInParent<Stordimento>();
             if (LifePointScript)
             {
                 LifePointScript.Damage(Damage);
+            }
+            if (stordimentoScript)
+            {
+                stordimentoScript.StunDamage(StunDamage);
+            }
+            if (LifePointScript || stordimentoScript)
+            {
                 Destroy(this.gameObject);
             }
+
         }
         else if (collision.gameObject.CompareTag("Platform"))
 		{
