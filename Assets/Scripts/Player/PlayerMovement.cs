@@ -45,11 +45,13 @@ public class PlayerMovement : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
+        Debug.Log("EXIT");
         InVolo = true;
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("ENTER");
         InVolo = false;
     }
     /*
