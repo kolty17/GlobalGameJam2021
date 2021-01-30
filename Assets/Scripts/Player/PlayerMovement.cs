@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         InMovimento = true;
         if (Input.GetKey(KeyCode.A))
@@ -42,19 +42,5 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 1;
         }
     }
-    /*
-    private void OnCollisionExit2D(Collision2D collision)
-	{
-        InVolo = false;
-        if (collision.gameObject.CompareTag("Platform"))
-		{
-            if (transform.position.y>collision.gameObject.transform.position.y) //dall'alto
-			{
-                Debug.Log("dall'alto");
-                InVolo = false;
-                rb.drag = 0;
-            }
-		}
-	}
-    */
+
 }
