@@ -45,8 +45,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028101206, y: -0.002809406}
-  m_Size: {x: 2.4553082, y: 1.0281135}
+  m_Offset: {x: -0.08447433, y: -0.0028093955}
+  m_Size: {x: 1.8827834, y: 1.0281225}
   m_Direction: 1
 --- !u!114 &7894042308282619834
 MonoBehaviour:
@@ -139,9 +139,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f8ea37f5145acf14da4fd590c1484ebe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2743f53ad6b0d82449508e51344e2670, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 10.24, y: 4.35}
@@ -188,7 +188,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 4.35}
+    oldSize: {x: 8.533334, y: 8.533334}
     newSize: {x: 10.24, y: 4.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

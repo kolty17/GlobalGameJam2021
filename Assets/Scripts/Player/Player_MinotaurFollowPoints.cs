@@ -6,7 +6,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
 {
 
     public float Player_FollowPointCreation_Timer = 0.1f;
-    private float Player_FollowPointCreation_Timer_Actual = 0.1f;
+    [HideInInspector] public float Player_FollowPointCreation_Timer_Actual = 0.1f;
 
     public float Player_FollowPointCreation_DistanceFromLastPointForNewCreation = 0.5f;
 
@@ -18,6 +18,8 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
 
     private GameObject Minotaur;
     private Minotaur_FollowPlayer Minotaur_FollowPlayerScript;
+
+    //private int PointIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
         };
         Player_FollowPoints_Container.transform.position = Vector3.zero;
 
-        Minotaur = GameObject.Find("Minotaur");
+        Minotaur = GameObject.FindGameObjectWithTag("Minotaur");
         if (Minotaur == null)
         {
             Debug.LogWarning("ATTENZIONE: non c'è il minotauro nella scena");
@@ -71,74 +73,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
         if (Player_FollowPointCreation_Timer_Actual <= 0.0f)
         {
 
-            if (Player_FollowPoints_LastInstancedPoint == null)
-            {
-
-                if (Player_FollowPoints_LastInstancedPoint_Position != null)
-                {
-
-                    float distanceToLastPoint = Vector3.Distance(transform.position, Player_FollowPoints_LastInstancedPoint_Position);
-                    if (distanceToLastPoint > Player_FollowPointCreation_DistanceFromLastPointForNewCreation)
-                    {
-
-                        Player_FollowPoints_PathLength = distanceToLastPoint;
-
-                        Player_FollowPoints_LastInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
-                        Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
-                        Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
-
-                        Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
-
-                        Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
-
-                        Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
-
-                    }
-
-                }
-                else
-                {
-
-                    Player_FollowPoints_LastInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
-                    Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
-                    Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
-
-                    Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
-
-                    Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
-
-                    Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
-
-                }
-
-            }
-            else
-            {
-
-                float distanceToLastPoint = Vector3.Distance(transform.position, Player_FollowPoints_LastInstancedPoint_Position);
-                if (distanceToLastPoint > Player_FollowPointCreation_DistanceFromLastPointForNewCreation)
-                {
-
-                    Player_FollowPoints_PathLength += distanceToLastPoint;
-
-                    GameObject newInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
-                    Player_FollowPoints_LastInstancedPoint.GetComponent<Minotaur_FollowPoint>().FollowPoint_Next = newInstancedPoint;
-
-                    Player_FollowPoints_LastInstancedPoint = newInstancedPoint;
-                    if (Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach == null)
-                    {
-                        Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
-                        Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
-                    }
-                    Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
-
-                    Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
-
-                    Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
-
-                }
-
-            }
+            SpawnFollowPoint(false, false);
 
         }
         else
@@ -149,5 +84,90 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
         }
 
     }
+
+
+    public void SpawnFollowPoint(bool ToggleJump, bool ForceSpawn)
+    {
+
+        if (Player_FollowPoints_LastInstancedPoint == null)
+        {
+
+            if (Player_FollowPoints_LastInstancedPoint_Position != null)
+            {
+
+                float distanceToLastPoint = Vector3.Distance(transform.position, Player_FollowPoints_LastInstancedPoint_Position);
+                if (distanceToLastPoint > Player_FollowPointCreation_DistanceFromLastPointForNewCreation)
+                {
+
+                    Player_FollowPoints_PathLength = distanceToLastPoint;
+
+                    Player_FollowPoints_LastInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
+                    /*Player_FollowPoints_LastInstancedPoint.name = PointIndex.ToString();
+                    PointIndex += 1;*/
+                    Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
+                    Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
+
+                    Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
+
+                    Player_FollowPoints_LastInstancedPoint.GetComponent<Minotaur_FollowPoint>().FollowPoint_ToggleJump = ToggleJump;
+                    Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
+
+                    Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
+
+                }
+
+            }
+            else
+            {
+
+                Player_FollowPoints_LastInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
+                /*Player_FollowPoints_LastInstancedPoint.name = PointIndex.ToString();
+                PointIndex += 1;*/
+                Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
+                Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
+
+                Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
+
+                Player_FollowPoints_LastInstancedPoint.GetComponent<Minotaur_FollowPoint>().FollowPoint_ToggleJump = ToggleJump;
+                Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
+
+                Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
+
+            }
+
+        }
+        else
+        {
+
+            float distanceToLastPoint = Vector3.Distance(transform.position, Player_FollowPoints_LastInstancedPoint_Position);
+            if (distanceToLastPoint > Player_FollowPointCreation_DistanceFromLastPointForNewCreation || ForceSpawn)
+            {
+
+                Player_FollowPoints_PathLength += distanceToLastPoint;
+
+                GameObject newInstancedPoint = Instantiate(Player_FollowPoint_Prefab, transform.position, Quaternion.Euler(Vector3.zero));
+                /*newInstancedPoint.name = PointIndex.ToString();
+                PointIndex += 1;*/
+                Player_FollowPoints_LastInstancedPoint.GetComponent<Minotaur_FollowPoint>().FollowPoint_Next = newInstancedPoint;
+
+                Player_FollowPoints_LastInstancedPoint = newInstancedPoint;
+                if (Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach == null)
+                {
+                    Minotaur_FollowPlayerScript.Minotaur_FoPl_PointToReach = Player_FollowPoints_LastInstancedPoint;
+                    Minotaur_FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = Minotaur.transform.position;
+                }
+                Player_FollowPoints_LastInstancedPoint_Position = Player_FollowPoints_LastInstancedPoint.transform.position;
+
+                Player_FollowPoints_LastInstancedPoint.GetComponent<Minotaur_FollowPoint>().FollowPoint_ToggleJump = ToggleJump;
+                Player_FollowPoints_LastInstancedPoint.transform.parent = Player_FollowPoints_Container.transform;
+
+                Player_FollowPointCreation_Timer_Actual = Player_FollowPointCreation_Timer;
+
+            }
+
+        }
+
+    }
+
 
 }

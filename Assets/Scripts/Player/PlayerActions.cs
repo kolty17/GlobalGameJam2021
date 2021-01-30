@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
-    [SerializeField] public GameObject Projectile;
     [SerializeField] public float ThrowForce = 10.0f;
     [SerializeField] public float ThrowDelay = 0.5f;
     private float Timer = 0f;
     private bool CanThrow = false;
     private scrFooterBar FooterScript;
-
+    private GameObject ThrowItem;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,10 @@ public class PlayerActions : MonoBehaviour
     void Update()
     {
         int counter = FooterScript.GetCounter();
-        Debug.Log("counter: " + counter);
+        /*
+        1 = sasso
+        2 = cibo
+        */
         if (!CanThrow)
         {
             Timer += Time.deltaTime;
@@ -31,13 +33,24 @@ public class PlayerActions : MonoBehaviour
                 CanThrow = true;
             }
         }
-        if (Input.GetButtonDown("Throw") && CanThrow)
+        if (Input.GetButtonDown("Throw") && CanThrow && Inventory.Throwable(counter) && Inventory.GetQuantity(counter)>0)
 		{
             CanThrow = false;
-            GameObject Proiettile = GameObject.Instantiate(Projectile, transform.position,Quaternion.identity,transform.root.parent);
+            GameObject Proiettile = GameObject.Instantiate(FooterScript.GetCurrentItemPrefab(), transform.position,Quaternion.identity,transform.root.parent);
             Vector2 Velocity = new Vector2(GetComponentInParent<Rigidbody2D>().velocity.x, 0);
             Proiettile.GetComponent<Rigidbody2D>().AddForce(Velocity + GetComponentInParent<PlayerMovement>().Forward * ThrowForce, ForceMode2D.Impulse);
-
-		}
+            if (counter > 1)
+			{
+                Inventory.DecreaseQuantity(counter);
+                FooterScript.UpdateCounter(counter);
+            }
+        }
+        if (Input.GetButtonDown("Eat") && Inventory.Eatable(counter) && Inventory.GetQuantity(counter)>0)
+		{
+            Inventory.DecreaseQuantity(counter);
+            FooterScript.UpdateCounter(counter);
+            GetComponentInParent<LifePoint>().Cure(1);
+            GetComponentInParent<HungerPoint>().RestoreAll();
+        }
     }
 }

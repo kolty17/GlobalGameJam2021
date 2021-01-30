@@ -23,9 +23,9 @@ TagManager:
   - PavementCollision
   - Projectiles
   - Wall
-  - 
-  - 
-  - 
+  - Items
+  - MinotaurTrigger
+  - Food
   - 
   - 
   - 
