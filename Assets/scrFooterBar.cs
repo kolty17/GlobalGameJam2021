@@ -24,6 +24,7 @@ public class scrFooterBar : MonoBehaviour
     public GameObject numero3;
     public GameObject numero4;
     public GameObject numero5;
+    private GameObject player;
 
     public Sprite FULLHP;
     public Sprite HALFHP;
@@ -44,11 +45,15 @@ public class scrFooterBar : MonoBehaviour
         numero3.GetComponent<Text>().text = "";
         numero4.GetComponent<Text>().text = "";
         numero5.GetComponent<Text>().text = "";
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Sincronizzazione con dati player
+        SetLife((int)player.GetComponent<LifePoint>().HP);
+        SetFood((int)player.GetComponent<HungerPoint>().Hunger);
         if (Input.mouseScrollDelta.y > 0) counter++;
         if (Input.mouseScrollDelta.y < 0) counter--;
         if (counter > 5) counter = 5;
@@ -198,7 +203,7 @@ public class scrFooterBar : MonoBehaviour
 
     public void SetFood(int food)
     {
-        food = cibo;
+        cibo = food;
     }
 
     public void SetObject(int inventoryNumber, Sprite objSprite, int numberOfObjects)

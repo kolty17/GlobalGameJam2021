@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             InMovimento = true;
         }
         
-        if (Input.GetKeyDown(KeyCode.Space) && !InVolo) //Salto
+        if (Input.GetKey(KeyCode.Space) && !InVolo) //Salto
         {
             Debug.Log("Salto");
             rb.AddForce(Vector3.up * DeltaSalto, ForceMode2D.Impulse);
