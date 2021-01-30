@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
-    public float DeltaSalto = 1.0f;
+    public float DeltaSalto = 10.0f;
     public float DeltaVelocita = 1.0f;
     public float MoveSpeed = 1f;
-    public float attackDistance = 200;
+    public float attackDistance = 15;
     //public bool InVolo = false;
     private Vector3 direction = Vector3.left;
     private float rotation = 0;
@@ -28,7 +28,12 @@ public class EnemyBehaviour : MonoBehaviour
         if (onTheFloor)
         {
             GetComponent<Rigidbody2D>().gravityScale = 0f;
-            if (IsPlayerInRange())
+            if (GetComponent<Stordimento>().IsStunned())
+            {
+                rb.velocity = Vector2.zero;
+                //stunned animation
+            }
+            else if (IsPlayerInRange())
             {
                 Move();
             }
@@ -44,9 +49,9 @@ public class EnemyBehaviour : MonoBehaviour
         bool isPlayerInRange = true;
         if (player != null)
         {
-            if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)//ci entra anche se non in range
             {
-                Debug.Log("Player in Range");
+                Debug.Log("Player in Range: " + Mathf.Abs(player.transform.position.x - transform.position.x).ToString());
                 isPlayerInRange = true;
             }
         }
@@ -56,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Move() //muove il nemico sulla piattaforma
     {
         rb.drag = 0;
-        rb.velocity = direction;
+        rb.velocity = (direction * MoveSpeed);
         transform.eulerAngles = new Vector3(0, rotation, 0);
         //rb.AddForce(direction * DeltaVelocita);
         //rb.AddForce(Vector3.up * DeltaSalto, ForceMode2D.Impulse);

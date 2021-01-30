@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 7894042308456915398}
   - component: {fileID: 7894042308456915397}
   - component: {fileID: 8062568780579722839}
+  - component: {fileID: 4903189878692271492}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -228,3 +229,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   HPMax: 100
+--- !u!114 &4903189878692271492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894042308456915396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f458434783b4449d0df624f3d0453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StunPoints: 0
+  MaxStunPoints: 100
+  StunTime: 3
+  Stunned: 0
+  StunnedTime: 0
