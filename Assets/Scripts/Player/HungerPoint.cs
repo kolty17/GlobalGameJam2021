@@ -17,6 +17,23 @@ public class HungerPoint : MonoBehaviour
         Hunger = HungerMax;
         Timer = 0;
     }
+    public void Cure(float Amount)
+    {
+        //TODO: Aggiungere Effetto
+        Hunger += Amount;
+        if (Hunger >= HungerMax)
+        {
+            Hunger = HungerMax;
+
+        }
+        IsStarving = false;
+    }
+    
+    public void RestoreAll()
+	{
+        Hunger = HungerMax;
+        IsStarving = false;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
