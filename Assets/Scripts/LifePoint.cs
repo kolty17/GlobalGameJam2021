@@ -12,6 +12,16 @@ public class LifePoint : MonoBehaviour
         HP = HPMax;
     }
 
+    public void Damage(float Damage)
+	{
+        //TODO: Aggiungere Effetto
+        HP -= Damage;
+        if (HP <= 0)
+		{
+            HP = 0;
+            //Morte
+		}
+	}
     // Update is called once per frame
     void Update()
     {

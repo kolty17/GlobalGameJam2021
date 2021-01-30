@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeSync : MonoBehaviour
+public class HungerSync : MonoBehaviour
 {
     private GameObject Player;
     private Slider slider;
@@ -12,13 +12,13 @@ public class LifeSync : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         slider = GetComponent<Slider>();
-        slider.maxValue = Player.GetComponent<LifePoint>().HPMax;
-        FillArea = transform.Find("Fill Area").gameObject;
+        slider.maxValue = Player.GetComponent<HungerPoint>().HungerMax;
+		FillArea = transform.Find("Fill Area").gameObject;
     }
 
     void Update()
     {
-        slider.value = Player.GetComponent<LifePoint>().HP;
-        FillArea.SetActive(Player.GetComponent<LifePoint>().HP > 0);
+        slider.value = Player.GetComponent<HungerPoint>().Hunger;
+        FillArea.SetActive(Player.GetComponent<HungerPoint>().Hunger > 0);
     }
 }
