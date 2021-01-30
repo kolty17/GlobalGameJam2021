@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LVTitle.unity
+    guid: 9dde896c0889c39489c7bd4104584752
+  - enabled: 1
+    path: Assets/Scenes/LV01.unity
+    guid: a1cfd555d2487d849b945fd0e9d566a6
+  - enabled: 1
+    path: Assets/Scenes/LVCredits.unity
+    guid: 3246a0cda9d7d09448e76487434f50a0
+  - enabled: 1
+    path: Assets/Scenes/LVGameOver.unity
+    guid: 44f029555dadc9c4ba6130b677d422e4
   m_configObjects: {}
