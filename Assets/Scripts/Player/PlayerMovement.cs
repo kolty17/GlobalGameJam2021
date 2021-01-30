@@ -42,18 +42,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 1;
         }
     }
-
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-        Debug.Log("EXIT");
-        InVolo = true;
-	}
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("ENTER");
-        InVolo = false;
-    }
     /*
     private void OnCollisionExit2D(Collision2D collision)
 	{
