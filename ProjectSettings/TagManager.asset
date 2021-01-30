@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Minotaur
   - Platform
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -12,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - PlayerCollision
+  - EnemyCollision
+  - Pavement
+  - PavementCollision
   - 
   - 
   - 
