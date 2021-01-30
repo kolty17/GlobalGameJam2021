@@ -33,12 +33,17 @@ public class PlayerActions : MonoBehaviour
                 CanThrow = true;
             }
         }
-        if (Input.GetButtonDown("Throw") && CanThrow)
+        if (Input.GetButtonDown("Throw") && CanThrow && Inventory.Throwable(counter))
 		{
             CanThrow = false;
             GameObject Proiettile = GameObject.Instantiate(FooterScript.GetCurrentItemPrefab(), transform.position,Quaternion.identity,transform.root.parent);
             Vector2 Velocity = new Vector2(GetComponentInParent<Rigidbody2D>().velocity.x, 0);
             Proiettile.GetComponent<Rigidbody2D>().AddForce(Velocity + GetComponentInParent<PlayerMovement>().Forward * ThrowForce, ForceMode2D.Impulse);
+		}
+        if (Input.GetButtonDown("Eat") && Inventory.Eatable(counter) && Inventory.GetQuantity(counter)>0)
+		{
+            Inventory.DecreaseQuantity(counter);
+            FooterScript.UpdateCounter(counter);
 		}
     }
 }
