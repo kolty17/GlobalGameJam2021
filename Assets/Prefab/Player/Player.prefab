@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d735dccdebb3a2c4695ac446ea5069f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeltaSalto: 2
-  DeltaVelocita: 10
+  DeltaSalto: 3
+  DeltaVelocita: 20
   InVolo: 0
   InMovimento: 0
 --- !u!1 &7505739755501748469

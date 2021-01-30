@@ -2027,7 +2027,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4015494981987844870, guid: 934675d3a7d912944b716934f9667db7, type: 3}
       propertyPath: DeltaSalto
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015494981987844870, guid: 934675d3a7d912944b716934f9667db7, type: 3}
+      propertyPath: DeltaVelocita
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5591493846779041365, guid: 934675d3a7d912944b716934f9667db7, type: 3}
       propertyPath: m_Name
