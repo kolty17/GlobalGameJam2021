@@ -48,7 +48,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
     void Update()
     {
 
-        float newX = transform.position.x;
+        /*float newX = transform.position.x;
         if (Input.GetKey("d"))
         {
             newX = Mathf.MoveTowards(newX, newX + (Time.deltaTime * 5.0f), 100.0f);
@@ -66,7 +66,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
         {
             newY = Mathf.MoveTowards(newY, newY - (Time.deltaTime * 5.0f), 100.0f);
         }
-        transform.parent.position = new Vector3(newX, newY, transform.parent.position.z);
+        transform.parent.position = new Vector3(newX, newY, transform.parent.position.z);*/
 
         if (Player_FollowPointCreation_Timer_Actual <= 0.0f)
         {

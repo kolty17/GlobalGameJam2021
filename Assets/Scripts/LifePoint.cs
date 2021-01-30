@@ -20,6 +20,10 @@ public class LifePoint : MonoBehaviour
 		{
             HP = 0;
             //Morte
+            if (CompareTag("Enemy"))
+			{
+                Destroy(this.gameObject);
+			}
 		}
 	}
     // Update is called once per frame
