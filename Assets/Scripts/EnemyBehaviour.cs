@@ -6,21 +6,27 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]    
     public float DeltaSalto = 10.0f;
-    public float DeltaVelocita = 1.0f;
+    //public float DeltaVelocita = 1.0f;
+    public float SprintForce = 100;
     public float MoveSpeed = 1f;
     public float attackDistance = 15;
+    public float playerKnockbackWhileMad = 100;
     //public bool InVolo = false;
-    private Vector3 direction = Vector3.left;
+    public Vector3 direction = Vector3.left;
     private float rotation = 0;
     private Rigidbody2D rb;
     private GameObject player;
     public bool onTheFloor = false;
     public float gravityScale = 1.0f;
+    public Stordimento stordimento;
+    public MeleeAttack attack;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        stordimento = GetComponent<Stordimento>();
+        attack = GetComponentInChildren<MeleeAttack>();
     }
 
     private void Update()
@@ -28,10 +34,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (onTheFloor)
         {
             GetComponent<Rigidbody2D>().gravityScale = 0f;
-            if (GetComponent<Stordimento>().IsStunned())
+            if (stordimento.IsStunned())
             {
                 //rb.velocity = Vector2.zero;
                 //stunned animation
+            }
+            else if (attack.IsMad())
+            {
+                ThisIsMaddness();
             }
             else if (IsPlayerInRange())
             {
@@ -51,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)//ci entra anche se non in range
             {
-                Debug.Log("Player in Range: " + Mathf.Abs(player.transform.position.x - transform.position.x).ToString());
+                Debug.Log("Player in Range: " + (player.transform.position.x - transform.position.x).ToString());
                 isPlayerInRange = true;
             }
         }
@@ -66,6 +76,25 @@ public class EnemyBehaviour : MonoBehaviour
         //rb.AddForce(direction * DeltaVelocita);
         //rb.AddForce(Vector3.up * DeltaSalto, ForceMode2D.Impulse);
         //if (!InMovimento) { rb.drag = 1; }
+    }
+
+    private void ThisIsMaddness()
+    {
+        float distance = (transform.position - player.transform.position).x;
+        Vector3 playerDirection = (new Vector3(-distance,0,0)).normalized;
+        rb.velocity = (playerDirection * MoveSpeed);
+        rb.AddForce(playerDirection * SprintForce);
+        direction = playerDirection;
+        if (direction == Vector3.left)
+        {
+            rotation = 0;
+        }
+        else if(direction == Vector3.right)
+        {
+            rotation = -180;
+        }
+        transform.eulerAngles = new Vector3(0, rotation, 0);
+        Debug.Log("PORCA PUTTANA: " + playerDirection);
     }
 
     //TODO: funzione per attaccare il player e fare danno
@@ -86,11 +115,15 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    }
     /*private void OnTriggerEnter2D(Collider2D collider)
     {
         return;
     }*/
-       
+
 
     //private void OnTriggerEnter2D(Collider2D collision) { InVolo = false; }
     /*[SerializeField] float moveSpeed = 1f;
