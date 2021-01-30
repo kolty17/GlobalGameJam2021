@@ -14,6 +14,8 @@ public class EnemyBehaviour : MonoBehaviour
     private float rotation = 0;
     private Rigidbody2D rb;
     private GameObject player;
+    public bool onTheFloor = false;
+    public float gravityScale = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +25,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (IsPlayerInRange())
+        if (onTheFloor)
         {
-            Move();
+            GetComponent<Rigidbody2D>().gravityScale = 0f;
+            if (IsPlayerInRange())
+            {
+                Move();
+            }
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
         }
     }
     private bool IsPlayerInRange()
@@ -36,6 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)
             {
+                Debug.Log("Player in Range");
                 isPlayerInRange = true;
             }
         }
@@ -56,17 +67,25 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (direction == Vector3.left)
+        if (collision.gameObject.CompareTag("Platform"))
         {
-            rotation = -180;
-            direction = Vector3.right;
-        }
-        else
-        {
-            direction = Vector3.left;
-            rotation = 0;
+            if (direction == Vector3.left)
+            {
+                rotation = -180;
+                direction = Vector3.right;
+            }
+            else
+            {
+                direction = Vector3.left;
+                rotation = 0;
+            }
         }
     }
+    /*private void OnTriggerEnter2D(Collider2D collider)
+    {
+        return;
+    }*/
+       
 
     //private void OnTriggerEnter2D(Collider2D collision) { InVolo = false; }
     /*[SerializeField] float moveSpeed = 1f;
