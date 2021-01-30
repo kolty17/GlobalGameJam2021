@@ -30,6 +30,9 @@ public class Minotaur_Patience : MonoBehaviour
     private float Minotaur_Patience_Timer_Actual = 4.0f;
     private bool Minotaur_Patience_Showing = false;
 
+    public Vector3 Minotaur_Patience_Show_SpriteScale = Vector3.one;
+    public Vector3 Minotaur_Patience_Change_SpriteScale = Vector3.one;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,10 +89,12 @@ public class Minotaur_Patience : MonoBehaviour
                         actualExpression = Expression_Hate;
                     }
 
+                    //Expression_Gameobjects[0].transform.parent.localScale = Minotaur_Patience_Show_SpriteScale;
                     foreach (GameObject expressionSlot in Expression_Gameobjects)
                     {
 
                         expressionSlot.GetComponent<SpriteRenderer>().sprite = actualExpression;
+                        expressionSlot.transform.localScale = Minotaur_Patience_Show_SpriteScale;
 
                     }
 
@@ -112,9 +117,7 @@ public class Minotaur_Patience : MonoBehaviour
 
                 foreach (GameObject expressionSlot in Expression_Gameobjects)
                 {
-
                     expressionSlot.GetComponent<SpriteRenderer>().sprite = null;
-
                 }
 
                 Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
@@ -127,8 +130,10 @@ public class Minotaur_Patience : MonoBehaviour
     }
 
 
-    void ChangePatience(float value)
+    public void ChangePatience(float value)
     {
+
+        Minotaur_PatiencePoints_Actual += value;
 
         Sprite actualExpression;
         if (value >= 0)
@@ -140,17 +145,20 @@ public class Minotaur_Patience : MonoBehaviour
             actualExpression = Expression_DecreasePatience;
         }
 
+        Minotaur_PatiencePoints_Actual = Mathf.Clamp(Minotaur_PatiencePoints_Actual, 0.0f, Minotaur_PatiencePoints_Max);
+
+        //Expression_Gameobjects[0].transform.parent.localScale = Minotaur_Patience_Change_SpriteScale;
         foreach (GameObject expressionSlot in Expression_Gameobjects)
         {
-
             expressionSlot.GetComponent<SpriteRenderer>().sprite = actualExpression;
-
+            expressionSlot.transform.localScale = Minotaur_Patience_Change_SpriteScale;
         }
 
-        Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
+        Minotaur_Patience_Timer_Actual = Minotaur_Patience_Change_Timer;
         Minotaur_Patience_Showing = true;
 
         Minotaur_ExpressionsAnimator.SetBool("Expressions", true);
+        Minotaur_ExpressionsAnimator.Play("Expression", -1, 0);
 
     }
 

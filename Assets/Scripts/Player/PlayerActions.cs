@@ -13,7 +13,15 @@ public class PlayerActions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (GameObject.Find("UI - FooterBar") == null)
+        {
+            this.enabled = false;
+
+            return;
+        }
         FooterScript = GameObject.Find("UI - FooterBar").GetComponent<scrFooterBar>();
+
     }
 
     // Update is called once per frame
