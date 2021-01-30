@@ -6,5 +6,6 @@ public class Minotaur_FollowPoint : MonoBehaviour
 {
 
     [HideInInspector] public GameObject FollowPoint_Next;
+    [HideInInspector] public bool FollowPoint_ToggleJump = false;
 
 }

@@ -10,13 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public bool InVolo = false;
     public bool InMovimento = false;
     private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
+
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         InMovimento = true;
         if (Input.GetKey(KeyCode.A))
