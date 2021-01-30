@@ -29,7 +29,7 @@ public class scrLvlChange : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Lv01", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Lv01", LoadSceneMode.Single);
     }
 
     public void Exit()
