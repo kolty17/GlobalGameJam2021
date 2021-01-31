@@ -61,7 +61,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackIntensity: 100
+  knockbackIntensityWhileMad: 500
   meleeDamage: 1
+  hitBeforeGettingMad: 2
+  madnessTotalTime: 1
+  hit: 0
+  madnessCounter: 0
+  isMad: 0
 --- !u!1 &7894042308456915396
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +83,7 @@ GameObject:
   - component: {fileID: 7894042308456915397}
   - component: {fileID: 8062568780579722839}
   - component: {fileID: 4903189878692271492}
+  - component: {fileID: 1590368893536101019}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -210,11 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeltaSalto: 10
-  DeltaVelocita: 2
+  SprintForce: 100
   MoveSpeed: 2
   attackDistance: 200
+  playerKnockbackWhileMad: 100
+  direction: {x: -1, y: 0, z: 0}
   onTheFloor: 0
   gravityScale: 1
+  stordimento: {fileID: 0}
+  attack: {fileID: 0}
 --- !u!114 &8062568780579722839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,3 +258,22 @@ MonoBehaviour:
   StunSprite: {fileID: 3674940434980535541, guid: 7fbc220015539704588faab49c1745b2, type: 3}
   Stunned: 0
   StunnedTime: 0
+--- !u!95 &1590368893536101019
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894042308456915396}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
