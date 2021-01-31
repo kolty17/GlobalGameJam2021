@@ -618,10 +618,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: cd8fb37bc88ba344caa4ce89465c8eed, type: 3}
-    m_FontSize: 140
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 140
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -629,7 +629,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nome non pervenuto
+  m_Text: 'Chi trova un amico...
+
+    trova un mostro gigante incazzatissimo'
 --- !u!222 &679915774
 CanvasRenderer:
   m_ObjectHideFlags: 0
