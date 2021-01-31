@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        Debug.Log("collision: " + collision.gameObject.name);
+        //Debug.Log("collision: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("EnemyBody"))
         {
             LifePoint LifePointScript = collision.gameObject.GetComponentInParent<LifePoint>();
@@ -38,6 +38,11 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
 
+        }
+        else if (collision.gameObject.CompareTag("Minotaur"))
+        {
+            collision.gameObject.GetComponent<Minotaur_Charging>().Minotaur_RocksBeforeCharge -= 1;
+            Destroy(this.gameObject);
         }
         else if (collision.gameObject.CompareTag("Platform"))
 		{

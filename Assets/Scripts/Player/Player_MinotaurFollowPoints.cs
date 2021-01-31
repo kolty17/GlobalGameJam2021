@@ -13,7 +13,7 @@ public class Player_MinotaurFollowPoints : MonoBehaviour
     private GameObject Player_FollowPoints_Container;
     private GameObject Player_FollowPoints_LastInstancedPoint;
     private Vector3 Player_FollowPoints_LastInstancedPoint_Position;
-    [HideInInspector] public float Player_FollowPoints_PathLength = 0.0f;
+    /*[HideInInspector]*/ public float Player_FollowPoints_PathLength = 0.0f;
     public GameObject Player_FollowPoint_Prefab;
 
     private GameObject Minotaur;

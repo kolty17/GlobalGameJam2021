@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2062217576283777798}
   - component: {fileID: 7203771126823918867}
   - component: {fileID: 8270507740803933976}
+  - component: {fileID: -4432816297081912112}
   m_Layer: 10
   m_Name: Sasso
   m_TagString: Projectile
@@ -149,3 +150,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
+  StunDamage: 25
+--- !u!114 &-4432816297081912112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452211867208237752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58da1ac57ec33694687cd63153f33088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minotaur_PatienceChange: -10

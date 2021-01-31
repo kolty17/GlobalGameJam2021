@@ -82,6 +82,101 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2318462873714870732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4426281549724016148}
+  - component: {fileID: 6748986821391693270}
+  - component: {fileID: 1473204285953782676}
+  - component: {fileID: 647339537731142827}
+  m_Layer: 0
+  m_Name: PlatformCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4426281549724016148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318462873714870732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.6, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5668430848071550505}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6748986821391693270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318462873714870732}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &1473204285953782676
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318462873714870732}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!114 &647339537731142827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318462873714870732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acadd1881e9c7a447a9ea8ae287f71cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minotaur_ChargingScript: {fileID: 0}
+  CanFall: 0
+  IsRunning: 0
 --- !u!1 &3768660049739416280
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +257,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1, y: 1, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4426281549724016148}
   m_Father: {fileID: 5668430848277086878}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,6 +328,7 @@ GameObject:
   - component: {fileID: 3106508887015371655}
   - component: {fileID: 5668430848145115816}
   - component: {fileID: 433857221401739421}
+  - component: {fileID: 4690585221800558474}
   m_Layer: 13
   m_Name: Minotaur
   m_TagString: Minotaur
@@ -390,11 +487,11 @@ MonoBehaviour:
   Minotaur_FoPl_LerpSpeed: 8
   Minotuar_FoPl_JumpLerpSpeed: 9
   Minotaur_FoPl_LerpStartPosition: {x: 0, y: 0, z: 0}
-  Minotaur_FoPl_PathDistanceForFollow: 3
-  Minotaur_FoPl_DistanceForStop: 2
-  Minotaur_FoPl_CoverDistance_PathDistanceForNewSpeed: 8
+  Minotaur_FoPl_PathDistanceForFollow: 6
+  Minotaur_FoPl_DistanceForStop: 3
+  Minotaur_FoPl_CoverDistance_PathDistanceForNewSpeed: 12
   Minotaur_FoPl_CoverDistance_NewLerpSpeed: 12
-  Minotaur_FoPl_CoverDistance_PathDistanceForBackToNormalSpeed: 3
+  Minotaur_FoPl_CoverDistance_PathDistanceForBackToNormalSpeed: 4
 --- !u!114 &433857221401739421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d13c5dbb76174d4996c8385d2f3a109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Minotaur_PlayerRelationship: 2
   Expression_IncreasePatience: {fileID: 21300000, guid: 9da27fd0f38533f4caa4bafd30658b0a, type: 3}
   Expression_DecreasePatience: {fileID: 21300000, guid: 30a4590236b50e14cbba8555ed8d4c9b, type: 3}
   Expression_Love: {fileID: 21300000, guid: 22553f2d0c2b51a4e8bd0a050403ce99, type: 3}
@@ -426,6 +525,80 @@ MonoBehaviour:
   Minotaur_Patience_Change_Timer: 0.5
   Minotaur_Patience_Show_SpriteScale: {x: 1, y: 1, z: 1}
   Minotaur_Patience_Change_SpriteScale: {x: 3, y: 3, z: 3}
+--- !u!114 &4690585221800558474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668430848145115823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a7760109cb032479ac05b5b7b3c857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minotaur_ChargeInfo_List:
+  - RelationshipForActivation: 0
+    RockHitsForActivation: 5
+    ChargeAtPlayer_Chance: 5
+    ChargeAtPlayer_DamageToPlayer: 1
+    ChargeAtPlayer_RagePreparationTimer: 3
+    ChargeAtPlayer_ChargeSpeed: 13
+    ChargeAtPlayer_RecoverTimer: 1
+    ChargeAtPlayer_TimeBeforeRecover: 3
+    EscapeFromPlayer_DamageToPlayer: 1
+    EscapeFromPlayer_EscapeSpeed: 13
+    EscapeFromPlayer_RecoverTimer: 1
+    EscapeFromPlayer_TimeBeforeRecover: 3
+  - RelationshipForActivation: 1
+    RockHitsForActivation: 3
+    ChargeAtPlayer_Chance: 25
+    ChargeAtPlayer_DamageToPlayer: 1
+    ChargeAtPlayer_RagePreparationTimer: 2
+    ChargeAtPlayer_ChargeSpeed: 13
+    ChargeAtPlayer_RecoverTimer: 1
+    ChargeAtPlayer_TimeBeforeRecover: 3
+    EscapeFromPlayer_DamageToPlayer: 1
+    EscapeFromPlayer_EscapeSpeed: 13
+    EscapeFromPlayer_RecoverTimer: 1
+    EscapeFromPlayer_TimeBeforeRecover: 3
+  - RelationshipForActivation: 2
+    RockHitsForActivation: 2
+    ChargeAtPlayer_Chance: 50
+    ChargeAtPlayer_DamageToPlayer: 2
+    ChargeAtPlayer_RagePreparationTimer: 2
+    ChargeAtPlayer_ChargeSpeed: 15
+    ChargeAtPlayer_RecoverTimer: 2
+    ChargeAtPlayer_TimeBeforeRecover: 4
+    EscapeFromPlayer_DamageToPlayer: 2
+    EscapeFromPlayer_EscapeSpeed: 15
+    EscapeFromPlayer_RecoverTimer: 2
+    EscapeFromPlayer_TimeBeforeRecover: 4
+  - RelationshipForActivation: 3
+    RockHitsForActivation: 2
+    ChargeAtPlayer_Chance: 70
+    ChargeAtPlayer_DamageToPlayer: 3
+    ChargeAtPlayer_RagePreparationTimer: 1
+    ChargeAtPlayer_ChargeSpeed: 15
+    ChargeAtPlayer_RecoverTimer: 4
+    ChargeAtPlayer_TimeBeforeRecover: 4
+    EscapeFromPlayer_DamageToPlayer: 3
+    EscapeFromPlayer_EscapeSpeed: 15
+    EscapeFromPlayer_RecoverTimer: 4
+    EscapeFromPlayer_TimeBeforeRecover: 4
+  - RelationshipForActivation: 4
+    RockHitsForActivation: 1
+    ChargeAtPlayer_Chance: 90
+    ChargeAtPlayer_DamageToPlayer: 4
+    ChargeAtPlayer_RagePreparationTimer: 0.3
+    ChargeAtPlayer_ChargeSpeed: 17
+    ChargeAtPlayer_RecoverTimer: 4
+    ChargeAtPlayer_TimeBeforeRecover: 6
+    EscapeFromPlayer_DamageToPlayer: 4
+    EscapeFromPlayer_EscapeSpeed: 17
+    EscapeFromPlayer_RecoverTimer: 4
+    EscapeFromPlayer_TimeBeforeRecover: 6
+  Minotaur_RocksBeforeCharge: 3
 --- !u!1 &5668430848277086879
 GameObject:
   m_ObjectHideFlags: 0
