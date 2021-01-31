@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,13 +41,15 @@ public class scrFooterBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //numero1.GetComponent<Text>().text = "";
+        numero1.GetComponent<Text>().text = "";
         numero2.GetComponent<Text>().text = "";
         numero3.GetComponent<Text>().text = "";
         numero4.GetComponent<Text>().text = "";
         numero5.GetComponent<Text>().text = "";
         player = GameObject.FindGameObjectWithTag("Player");
-        SetObject(2, ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
+        UpdateCounter(1);
+        UpdateCounter(2);
+        //SetObject(2, ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
     }
 
     // Update is called once per frame
@@ -218,7 +220,15 @@ public class scrFooterBar : MonoBehaviour
         switch (inventoryNumber)
         {
             case 1:
-                numero1.GetComponent<Text>().text = "x" + numberOfObjects;
+                if (numberOfObjects == 0)
+                {
+                    numero1.GetComponent<Text>().text = "x" + numberOfObjects;
+                }
+                else
+				{
+                    numero1.GetComponent<Text>().text = "x ∞";
+                }
+
                 break;
             case 2:
                 numero2.GetComponent<Text>().text = "x" + numberOfObjects;
