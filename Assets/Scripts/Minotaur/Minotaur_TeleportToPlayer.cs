@@ -19,29 +19,6 @@ public class Minotaur_TeleportToPlayer : MonoBehaviour
         if (TeleportToPlayer)
         {
 
-            /*if (LastInstancedPoint == null)
-            {
-                Teleport();
-            }
-            else
-            {
-
-                Debug.Log("2");
-                LastInstancedPoint.transform.parent = MinotaurFollowPointsScript.Player_FollowPoints_Container.transform.parent;
-
-                FollowPlayerScript.enabled = true;
-
-                FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = MinotaurFollowPointsScript.Player_FollowPoints_LastInstancedPoint_Position;
-                FollowPlayerScript.Minotaur_FoPl_LerpTimer = 0.0f;
-
-                LastInstancedPoint = null;
-
-                TeleportToPlayer = false;
-
-                this.enabled = false;
-
-            }*/
-
             Teleport();
 
             this.gameObject.GetComponent<Minotaur_TeleportToPlayer_Part2>().enabled = true;
@@ -77,12 +54,6 @@ public class Minotaur_TeleportToPlayer : MonoBehaviour
             name = "FollowPointsContainer"
         };
         MinotaurFollowPointsScript.Player_FollowPoints_Container.transform.position = Vector3.zero;
-        /*lastInstancedPoint.transform.parent = MinotaurFollowPointsScript.Player_FollowPoints_Container.transform.parent;
-
-        FollowPlayerScript.enabled = true;
-
-        FollowPlayerScript.Minotaur_FoPl_LerpStartPosition = MinotaurFollowPointsScript.Player_FollowPoints_LastInstancedPoint_Position;
-        FollowPlayerScript.Minotaur_FoPl_LerpTimer = 0.0f;*/
 
     }
 

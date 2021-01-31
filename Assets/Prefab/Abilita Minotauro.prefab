@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2184838007009255929}
   - component: {fileID: 2184838007009255928}
   - component: {fileID: 2184838007009255687}
-  - component: {fileID: 6823388574959721589}
+  - component: {fileID: 2040491679664348710}
   m_Layer: 12
   m_Name: Abilita Minotauro
   m_TagString: Untagged
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: -0.27407143, y: 0}
   serializedVersion: 2
   m_Radius: 3.305909
---- !u!114 &6823388574959721589
+--- !u!114 &2040491679664348710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2184838007009255686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa5a488fd20eb5478100dda9586f53f, type: 3}
+  m_Script: {fileID: 11500000, guid: 46d9ec9c7a79c3c4fa76bdf91da01bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Minotaur: {fileID: 0}
