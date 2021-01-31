@@ -40,13 +40,13 @@ public class MeleeAttack : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player")) //Damaging Player
         {
-            if (GetComponentInParent<EnemyBehaviour>().attack.IsMad())
+            if (GetComponentInParent<EnemyBehaviour>().attack.IsMad())//se nemico incazzato
             {
                 GetComponentInParent<EnemyBehaviour>().attack.Chill();
                 col.gameObject.GetComponent<Rigidbody2D>().AddForce(GetComponentInParent<EnemyBehaviour>().direction * knockbackIntensityWhileMad);
             }
-            else
-            {
+            else if(!GetComponentInParent<EnemyBehaviour>().stordimento.IsStunned())//se nemico stunnato
+            { //knockback e danno
                 Vector3 direction;
                 if (transform.position.x > col.gameObject.transform.position.x)
                 {
@@ -81,7 +81,6 @@ public class MeleeAttack : MonoBehaviour
     }
     private void HitHandler()
     {
-        Debug.Log("PROJECTILE COLLIDED WITH ENEMY");
         hit++;
         if (hit >= hitBeforeGettingMad)
         {
@@ -92,7 +91,7 @@ public class MeleeAttack : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform") && collision.gameObject.name== "EnemyJumpPlatform")
         {
             parentRigidbody.velocity = new Vector2(parentRigidbody.velocity.x, 0);
             GetComponentInParent<EnemyBehaviour>().onTheFloor = false;

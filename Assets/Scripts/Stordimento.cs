@@ -6,7 +6,7 @@ public class Stordimento : MonoBehaviour
 {
     [SerializeField] public float StunPoints = 0;
     [SerializeField] public float MaxStunPoints = 100f;
-    [SerializeField] public float StunTime = 3f;
+    [SerializeField] public float StunTime = 5f;
     public GameObject StunSprite;
     public bool Stunned = false;
     public float StunnedTime = 0f;
@@ -40,8 +40,26 @@ public class Stordimento : MonoBehaviour
         StunnedTime = StunTime;
         Stunned = true;
         StunPoints = 0;
+        RibaltamentoNemico rn = GetComponent<RibaltamentoNemico>();
+        if (rn) 
+        {
+            rn.Ribalta();
+        }
         //Vector3 vec = new Vector3(transform.position.x + (3.2f * GetComponent<EnemyBehaviour>().direction.x), transform.position.y, transform.position.z);
-        GameObject stunSprite = GameObject.Instantiate(StunSprite, transform.position + (GetComponent<EnemyBehaviour>().direction.normalized)*0.9f, Quaternion.identity, transform);
+        GameObject stunSprite = GameObject.Instantiate(StunSprite, transform.position + (GetComponent<EnemyBehaviour>().direction.normalized)*0.15f+ Vector3.up*0.2f, Quaternion.identity, transform);
+    }
+
+    public bool IsWakingUp()
+    {
+        if(StunnedTime < StunTime / 10 && Stunned)
+        {
+            Debug.Log("IS WAKING UP");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     // Update is called once per frame
