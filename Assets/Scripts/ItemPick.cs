@@ -94,7 +94,7 @@ public class ItemPick : MonoBehaviour
         }
         else if (collision.gameObject.transform.root.gameObject.CompareTag("Minotaur"))
 		{
-            Debug.Log("Preso al volo dal minotauro");
+            //Debug.Log("Preso al volo dal minotauro");
 		}
         */
     }

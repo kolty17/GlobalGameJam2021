@@ -33,6 +33,8 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     void Start()
     {
 
+        //Application.targetFrameRate = 60;
+
         Player = GameObject.FindGameObjectWithTag("Player");
         Player_FollowPointsScript = Player.transform.Find("FollowPointsSpawner").gameObject.GetComponent<Player_MinotaurFollowPoints>();
         transform.position = new Vector3(transform.position.x, transform.position.y, Player.transform.position.z);
@@ -50,7 +52,7 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-
+        Debug.Log(Minotaur_FoPl_IsFollowing);
         if (Minotaur_FoPl_PointToReach != null)
         {
 
@@ -76,6 +78,9 @@ public class Minotaur_FollowPlayer : MonoBehaviour
                     Minotaur_Anims_Animator.SetBool("IsWalking", true);
                     transform.position = Vector3.Lerp(Minotaur_FoPl_LerpStartPosition, Minotaur_FoPl_PointToReach.transform.position, Minotaur_FoPl_LerpTimer);
 
+                    float lastFrameMovementLength = Vector3.Distance(transform.position, Minotaur_LastFramePosition);
+                    Player_FollowPointsScript.Player_FollowPoints_PathLength -= lastFrameMovementLength;
+
                     if (Player_FollowPointsScript.Player_FollowPoints_PathLength <= Minotaur_FoPl_DistanceForStop)
                     {
                         Minotaur_FoPl_IsFollowing = false;
@@ -84,8 +89,8 @@ public class Minotaur_FollowPlayer : MonoBehaviour
                     else
                     {
 
-                        float lastFrameMovementLength = Vector3.Distance(transform.position, Minotaur_LastFramePosition);
-                        Player_FollowPointsScript.Player_FollowPoints_PathLength -= lastFrameMovementLength;
+                        /*float lastFrameMovementLength = Vector3.Distance(transform.position, Minotaur_LastFramePosition);
+                        Player_FollowPointsScript.Player_FollowPoints_PathLength -= lastFrameMovementLength;*/
 
                         if (Minotaur_FoPl_ActualLerpSpeed != Minotaur_FoPl_CoverDistance_NewLerpSpeed)
                         {
