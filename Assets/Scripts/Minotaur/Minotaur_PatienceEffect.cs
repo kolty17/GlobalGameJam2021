@@ -9,7 +9,7 @@ public class Minotaur_PatienceEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.tag == "Minotaur")
         {
 

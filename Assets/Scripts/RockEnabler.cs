@@ -14,7 +14,7 @@ public class RockEnabler : MonoBehaviour
 	{
 		if (collision.gameObject.transform.root.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("LET'S ROCK!");
+			//Debug.Log("LET'S ROCK!");
 			Inventory.IncreaseQuantity(1);
 			FooterScript.SetObject(1, FooterScript.ItemArray[0].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(1));
 			FooterScript.UpdateCounter(1);
