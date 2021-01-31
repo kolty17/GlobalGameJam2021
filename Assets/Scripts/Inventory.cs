@@ -6,6 +6,7 @@ public static class Inventory
 {
 	private static int rock = 0;
 	private static int food = 0;
+	public static bool NoFoodPicked = true;
 	public static int GetQuantity(int counter)
 	{
 		int result = 0;

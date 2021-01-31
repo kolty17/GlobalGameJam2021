@@ -16,6 +16,7 @@ public class RockEnabler : MonoBehaviour
 		{
 			Debug.Log("LET'S ROCK!");
 			Inventory.IncreaseQuantity(1);
+			FooterScript.SetObject(1, FooterScript.ItemArray[0].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(1));
 			FooterScript.UpdateCounter(1);
 			Destroy(this.gameObject);
 		}	
