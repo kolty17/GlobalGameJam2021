@@ -40,6 +40,7 @@ public class HungerPoint : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!HungerEnabled) return;
         if (!IsStarving)
 		{
             Timer += Time.fixedDeltaTime;

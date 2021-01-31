@@ -5,8 +5,10 @@ using UnityEngine;
 public class Minotaur_Patience : MonoBehaviour
 {
 
-    private GameObject Player;
+    [HideInInspector] public GameObject Player;
     private Animator Minotaur_ExpressionsAnimator;
+
+    [HideInInspector] public GlobalVars.PlayerRelationship Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Neutral;
 
     public Sprite Expression_IncreasePatience;
     public Sprite Expression_DecreasePatience;
@@ -46,6 +48,8 @@ public class Minotaur_Patience : MonoBehaviour
 
         Minotaur_PatiencePoints_Actual = Minotaur_PatiencePoints_Max / 2.0f;
         Minotaur_Patience_Timer_Actual = Minotaur_Patience_Show_Timer;
+
+        CheckRelationship();
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -147,6 +151,8 @@ public class Minotaur_Patience : MonoBehaviour
 
         Minotaur_PatiencePoints_Actual = Mathf.Clamp(Minotaur_PatiencePoints_Actual, 0.0f, Minotaur_PatiencePoints_Max);
 
+        CheckRelationship();
+
         //Expression_Gameobjects[0].transform.parent.localScale = Minotaur_Patience_Change_SpriteScale;
         foreach (GameObject expressionSlot in Expression_Gameobjects)
         {
@@ -162,5 +168,31 @@ public class Minotaur_Patience : MonoBehaviour
 
     }
 
+
+    public void CheckRelationship()
+    {
+
+        if (Minotaur_PatiencePoints_Actual >= Minotaur_Patience_Love_Min)
+        {
+            Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Love;
+        }
+        else if (Minotaur_PatiencePoints_Actual >= Minotaur_Patience_Like_Min)
+        {
+            Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Like;
+        }
+        else if (Minotaur_PatiencePoints_Actual >= Minotaur_Patience_Neutral_Min)
+        {
+            Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Neutral;
+        }
+        else if (Minotaur_PatiencePoints_Actual >= Minotaur_Patience_Dislike_Min)
+        {
+            Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Dislike;
+        }
+        else
+        {
+            Minotaur_PlayerRelationship = GlobalVars.PlayerRelationship.Hate;
+        }
+
+    }
 
 }
