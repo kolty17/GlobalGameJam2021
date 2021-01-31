@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d735dccdebb3a2c4695ac446ea5069f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeltaSalto: 3
+  DeltaSalto: 3.5
   DeltaVelocita: 20
   InVolo: 0
   InMovimento: 0

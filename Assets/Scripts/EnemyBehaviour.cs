@@ -61,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (Mathf.Abs(player.transform.position.x - transform.position.x) <= attackDistance)//ci entra anche se non in range
             {
-                Debug.Log("Player in Range: " + (player.transform.position.x - transform.position.x).ToString());
+                //Debug.Log("Player in Range: " + (player.transform.position.x - transform.position.x).ToString());
                 isPlayerInRange = true;
             }
         }
