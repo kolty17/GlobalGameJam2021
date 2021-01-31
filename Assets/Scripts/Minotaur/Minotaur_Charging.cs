@@ -64,8 +64,10 @@ public class Minotaur_Charging : MonoBehaviour
         Minotaur_PatienceScript = this.gameObject.GetComponent<Minotaur_Patience>();
         Minotaur_Animator = this.gameObject.gameObject.GetComponent<Animator>();
 
-        Minotaur_BodyContainer = transform.Find("Body_Container");
-        Minotaur_FallCheckScript = Minotaur_BodyContainer.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Minotaur_FallCheck>();
+        /*Minotaur_BodyContainer = transform.Find("Body_Container");
+        Minotaur_FallCheckScript = Minotaur_BodyContainer.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Minotaur_FallCheck>();*/
+        Minotaur_BodyContainer = this.gameObject.transform;
+        Minotaur_FallCheckScript = Minotaur_BodyContainer.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Minotaur_FallCheck>();
         Minotaur_FallCheckScript.Minotaur_ChargingScript = this;
 
         Minotaur_FollowPlayerScript = this.gameObject.GetComponent<Minotaur_FollowPlayer>();
@@ -90,7 +92,7 @@ public class Minotaur_Charging : MonoBehaviour
         if (!Minotaur_StartCharge)
         {
 
-            if (Minotaur_RocksBeforeCharge <= 0)
+            if (Minotaur_RocksBeforeCharge <= 0)// && !Minotaur_FollowPlayerScript.Minotaur_FoPl_IsJumping)
             {
 
                 Minotaur_PatienceScript.CheckRelationship();
@@ -159,7 +161,7 @@ public class Minotaur_Charging : MonoBehaviour
                     if (Minotaur_ChargeOrEscape_RecoverTimer <= 0.0f)
                     {
 
-                        Minotaur_PatienceScript.CheckRelationship();
+                        /*Minotaur_PatienceScript.CheckRelationship();
                         foreach (Minotaur_ChargeInfo chargeInfo in Minotaur_ChargeInfo_List)
                         {
 
@@ -173,6 +175,24 @@ public class Minotaur_Charging : MonoBehaviour
                         }
 
                         Minotaur_FollowPlayerScript.enabled = true;
+
+                        Minotaur_StartCharge = false;*/
+
+
+                        Minotaur_Animator.SetTrigger("IsDisappearing");
+
+                        Minotaur_PatienceScript.CheckRelationship();
+                        foreach (Minotaur_ChargeInfo chargeInfo in Minotaur_ChargeInfo_List)
+                        {
+
+                            if (chargeInfo.RelationshipForActivation == Minotaur_PatienceScript.Minotaur_PlayerRelationship)
+                            {
+                                Minotaur_RocksBeforeCharge = chargeInfo.RockHitsForActivation;
+
+                                break;
+                            }
+
+                        }
 
                         Minotaur_StartCharge = false;
 

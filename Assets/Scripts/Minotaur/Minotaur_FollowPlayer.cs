@@ -52,11 +52,7 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-<<<<<<< HEAD
         // Debug.Log(Minotaur_FoPl_IsFollowing);
-=======
-        Debug.Log(Minotaur_FoPl_IsFollowing);
->>>>>>> parent of ada31b3... Minotaur rocks mechanic
         if (Minotaur_FoPl_PointToReach != null)
         {
 
