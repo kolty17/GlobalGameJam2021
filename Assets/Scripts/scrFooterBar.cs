@@ -47,8 +47,8 @@ public class scrFooterBar : MonoBehaviour
         numero4.GetComponent<Text>().text = "";
         numero5.GetComponent<Text>().text = "";
         player = GameObject.FindGameObjectWithTag("Player");
-        UpdateCounter(1);
-        UpdateCounter(2);
+        //UpdateCounter(1);
+        //UpdateCounter(2);
         //SetObject(2, ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
     }
 

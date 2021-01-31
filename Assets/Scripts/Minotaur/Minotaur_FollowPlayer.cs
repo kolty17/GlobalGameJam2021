@@ -64,6 +64,7 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+		
         //Debug.Log(Minotaur_FoPl_IsFollowing + "; " + Minotaur_FoPl_IsJumping);// + "; " + Minotaur_FoPl_PointToReach.transform.position);
         if (Minotaur_FoPl_PointToReach != null)
         {

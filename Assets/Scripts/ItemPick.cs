@@ -34,8 +34,12 @@ public class ItemPick : MonoBehaviour
                     break;
                 case 2:
                     Inventory.IncreaseQuantity(2);
-                    //FooterScript.SetObject(2, FooterScript.ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
-                    FooterScript.UpdateCounter(2);
+                    if (Inventory.NoFoodPicked)
+					{
+                        FooterScript.SetObject(2, FooterScript.ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
+                        Inventory.NoFoodPicked = false;
+                    }
+                    FooterScript.UpdateCounter(2);                    
                     Destroy(this.gameObject);
                     break;
                 case 3:
