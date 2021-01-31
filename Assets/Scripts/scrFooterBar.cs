@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class scrFooterBar : MonoBehaviour
 {
     public GameObject selector;
+    private Sprite originalImageSprite;
     public GameObject oggetto1;
     public GameObject oggetto2;
     public GameObject oggetto3;
@@ -47,9 +48,24 @@ public class scrFooterBar : MonoBehaviour
         numero4.GetComponent<Text>().text = "";
         numero5.GetComponent<Text>().text = "";
         player = GameObject.FindGameObjectWithTag("Player");
+        originalImageSprite = oggetto5.GetComponent<Image>().sprite;
         //UpdateCounter(1);
         //UpdateCounter(2);
         //SetObject(2, ItemArray[1].GetComponent<SpriteRenderer>().sprite, Inventory.GetQuantity(2));
+    }
+
+    public void ResetAll()
+	{
+        numero1.GetComponent<Text>().text = "";
+        numero2.GetComponent<Text>().text = "";
+        numero3.GetComponent<Text>().text = "";
+        numero4.GetComponent<Text>().text = "";
+        numero5.GetComponent<Text>().text = "";
+        oggetto1.GetComponent<Image>().sprite = originalImageSprite;
+        oggetto2.GetComponent<Image>().sprite = originalImageSprite;
+        oggetto3.GetComponent<Image>().sprite = originalImageSprite;
+        oggetto4.GetComponent<Image>().sprite = originalImageSprite;
+        oggetto5.GetComponent<Image>().sprite = originalImageSprite;
     }
 
     // Update is called once per frame

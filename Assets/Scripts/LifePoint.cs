@@ -7,10 +7,12 @@ public class LifePoint : MonoBehaviour
 {
     [SerializeField] public float HP;
     [SerializeField] public float HPMax = 300f;
+    private scrFooterBar FooterScript;
     // Start is called before the first frame update
     void Start()
     {
         HP = HPMax;
+        FooterScript = GameObject.Find("UI - FooterBar").GetComponent<scrFooterBar>();
     }
 
     public void Cure(float Amount)
@@ -37,6 +39,8 @@ public class LifePoint : MonoBehaviour
 			}
             else if (CompareTag("Player"))
 			{
+                Inventory.ResetItems();
+                FooterScript.ResetAll();
                 SceneManager.LoadScene("LVGameOver");
 			}
 		}
