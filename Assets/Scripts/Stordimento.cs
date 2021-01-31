@@ -34,13 +34,14 @@ public class Stordimento : MonoBehaviour
     {
         return Stunned;
     }
+
     private void Stun()
     {
         StunnedTime = StunTime;
         Stunned = true;
         StunPoints = 0;
-        Vector3 vec = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        GameObject stunSprite = GameObject.Instantiate(StunSprite, vec, Quaternion.identity, transform);
+        //Vector3 vec = new Vector3(transform.position.x + (3.2f * GetComponent<EnemyBehaviour>().direction.x), transform.position.y, transform.position.z);
+        GameObject stunSprite = GameObject.Instantiate(StunSprite, transform.position + (GetComponent<EnemyBehaviour>().direction.normalized)*0.9f, Quaternion.identity, transform);
     }
 
     // Update is called once per frame

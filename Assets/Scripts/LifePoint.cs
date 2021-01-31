@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifePoint : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class LifePoint : MonoBehaviour
             if (CompareTag("Enemy"))
 			{
                 Destroy(this.gameObject);
+			}
+            else if (CompareTag("Player"))
+			{
+                SceneManager.LoadScene("LVGameOver");
 			}
 		}
 	}

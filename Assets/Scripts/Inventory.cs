@@ -4,14 +4,15 @@ using UnityEngine;
 
 public static class Inventory
 {
-	private static int food = 1;
+	private static int rock = 0;
+	private static int food = 0;
 	public static int GetQuantity(int counter)
 	{
 		int result = 0;
 		switch (counter)
 		{
 			case 1:
-				result = 999999999;
+				result = rock;
 				break;
 			case 2:
 				result = food;
@@ -32,6 +33,9 @@ public static class Inventory
 	{
 		switch (counter)
 		{
+			case 1:
+				rock = 99999; 
+				break;				
 			case 2:
 				food+=increasequantity;
 				break;

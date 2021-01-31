@@ -11,11 +11,13 @@ public class HungerPoint : MonoBehaviour
     [SerializeField] public float StarvationDamageTime = 1f;
     private float Timer;
     private bool IsStarving = false;
+    public bool HungerEnabled;
     // Start is called before the first frame update
     void Start()
     {
-        Hunger = HungerMax;
+        Hunger = 0;
         Timer = 0;
+        HungerEnabled = false;
     }
     public void Cure(float Amount)
     {
@@ -38,6 +40,7 @@ public class HungerPoint : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!HungerEnabled) return;
         if (!IsStarving)
 		{
             Timer += Time.fixedDeltaTime;
