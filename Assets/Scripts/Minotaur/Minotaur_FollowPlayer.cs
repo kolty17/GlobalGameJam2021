@@ -63,7 +63,15 @@ public class Minotaur_FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+        // Debug.Log(Minotaur_FoPl_IsFollowing);
+=======
+        Debug.Log(Minotaur_FoPl_IsFollowing);
+>>>>>>> parent of ada31b3... Minotaur rocks mechanic
+=======
+        Debug.Log(Minotaur_FoPl_IsFollowing + "; " + Minotaur_FoPl_IsJumping);// + "; " + Minotaur_FoPl_PointToReach.transform.position);
+>>>>>>> parent of 41c1dce... Merge branch 'main' of https://github.com/kolty17/GlobalGameJam2021 into main
         if (Minotaur_FoPl_PointToReach != null)
         {
 
